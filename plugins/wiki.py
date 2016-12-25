@@ -8,11 +8,11 @@ from tasbot.config import *
 class Main(IPlugin):
     def __init__(self, name, tasclient):
         IPlugin.__init__(self, name, tasclient) 
-    
+   
     def oncommandfromserver(self, command, args, socket):
         if (command == "SAID" and len(args) > 3 and str(args[1]) != "TurBot" and str(args[2]) == ".pages"):
             if len(str(args[3])) >= 3:
-                data = self.searchpages(str(args[3]))
+                data = self.mwiki.searchpages(str(args[3]))
                 for k, v in data.items():
                     message = 'SAY {0} {1} - {2}\n'.format(str(args[0]) , k, v)
                     socket.send(message.encode("UTF-8"))
@@ -47,6 +47,11 @@ class Main(IPlugin):
     def onload(self, tasc):
         self.app = tasc.main
         self.url = self.app.config.get_optionlist('wiki', "url")
+        self.mwiki = Mwiki(self.url)
+ 
+class Mwiki(object):
+    def __init__(self, url):
+        self.url = url
         self.session = mwapi.Session(self.url[0], user_agent="TurBot")
 
     def searchpages(self, name):
