@@ -1,0 +1,15 @@
+[tasbot]
+debug=1
+serveraddr=lobby.springrts.com
+serverport=8200
+nick=BotName
+password=BotPass
+admins=Admin1,Admin2
+plugins=wiki,join_channels
+host='lobby.springrts.com'
+
+[join_channels]
+channels=main
+
+[wiki]
+url=https://wikipedia.org
