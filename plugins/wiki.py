@@ -23,17 +23,19 @@ class Main(IPlugin):
 
 
         elif (command == "SAID" and len(args) > 2 and str(args[1]) != "TurBot" and str(args[2]) == ".pages"):
-            message = "SAY %s %s\n" % (str(args[0]), "ask for pages")
+            message = "SAY {0} {1}\n".format(str(args[0]), "ask for pages")
             socket.send(message.encode("UTF-8"))
 
 
         elif (command == "SAID" and len(args) > 3 and str(args[1]) != "TurBot" and str(args[2]) == ".themes"):
-            message = "SAY %s %s\n" % (str(args[0]), "not implemented yet!")
+            if len(str(args[3])) >= 3:
+                self.mwiki.searchthemes(str(args[3]))
+            message = "SAY [0] [1]\n".format(str(args[0]), "Ok see console log.")
             socket.send(message.encode("UTF-8"))
 
 
         elif (command == "SAID" and len(args) > 2 and str(args[1]) != "TurBot" and str(args[2]) == ".themes"):
-            message = "SAY %s %s\n" % (str(args[0]), "ask a theme")
+            message = "SAY {0} {1}\n".formar(str(args[0]), "ask a theme")
             socket.send(message.encode("UTF-8"))
 
         elif (command == "SAID" and len(args) > 2 and str(args[1]) != "TurBot" and str(args[2]) == ".help"):
@@ -71,3 +73,6 @@ class Mwiki(object):
 
         return pages
 
+    def searchthemes(self, name):
+        data = self.session.get(action='query', list='search', srsearch=name, inprop='url')
+        pprint(data)
