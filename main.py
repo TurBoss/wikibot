@@ -2,13 +2,13 @@
 # -*- coding: utf-8 -*-
 import sys
 
-import tasbot
-from tasbot.customlog import Log
+import tasbot3
+from tasbot3.customlog import Log
 
 if __name__=="__main__":
-	tasbot.check_min_version((1,))
+	tasbot3.check_min_version((1,))
 	configfile = "Main.conf"
-	config = tasbot.config.Config(configfile)
+	config = tasbot3.config.Config(configfile)
 	Log.init(config.get('tasbot', 'logfile', 'bot.log'),
 			 config.get('tasbot', 'loglevel', 'info'), True )
 
@@ -19,7 +19,7 @@ if __name__=="__main__":
 			Log.Notice("Registering account")
 	pidfile = config.get('tasbot','pidfile','bot.pid')
 	print(('using pidfile %s'%pidfile))
-	inst = tasbot.DefaultApp(configfile,pidfile,r,True)
+	inst = tasbot3.DefaultApp(configfile,pidfile,r,True)
 	if int(config.get( 'tasbot','debug', 0 )):
 		inst.run()#exec in fg
 	else:

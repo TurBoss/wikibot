@@ -2,8 +2,8 @@ import mwapi
 
 from pprint import pprint
 
-from tasbot.plugin import IPlugin
-from tasbot.config import *
+from tasbot3.plugin import IPlugin
+from tasbot3.config import *
 
 class Main(IPlugin):
     def __init__(self, name, tasclient):
@@ -55,7 +55,7 @@ class Mwiki(object):
         self.session = mwapi.Session(self.url[0], user_agent="TurBot")
 
     def searchpages(self, name):
-        data = self.session.get(action='query', generator='search', gsrsearch=name, gsrprop='snippet', gsrlimit=5, prop='info', inprop='url')
+        data = self.session.get(action='query', generator='search', gsrsearch=name, gsrprop='snippet', prop='info', inprop='url')
 
         datapages = []
         pages = dict()

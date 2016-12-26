@@ -1,7 +1,7 @@
 import string
 
-from tasbot.plugin import IPlugin
-from tasbot.config import *
+from tasbot3.plugin import IPlugin
+from tasbot3.config import *
 
 
 class Main(IPlugin):
