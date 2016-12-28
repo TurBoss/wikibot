@@ -38,14 +38,6 @@ class Main(IPlugin):
             message = "SAY {0} {1}\n".formar(str(args[0]), "ask a theme")
             socket.send(message.encode("UTF-8"))
 
-        elif (command == "SAID" and len(args) > 2 and str(args[1]) != "TurBot" and str(args[2]) == ".help"):
-            message = "SAY {0} {1}\n".format(str(args[0]), "usage: commands preceded with .")
-            socket.send(message.encode("UTF-8"))
-            message = "SAY {0} {1}\n".format(str(args[0]), "      pages <topic> - returns a lis of matching pages from wiki")
-            socket.send(message.encode("UTF-8"))
-            message = "SAY {0} {1}\n".format(str(args[0]), "      themes <topic> - returns a lis of matching themes from wiki")
-            socket.send(message.encode("UTF-8"))
-
     def onload(self, tasc):
         self.app = tasc.main
         self.url = self.app.config.get_optionlist('wiki', "url")
@@ -74,5 +66,14 @@ class Mwiki(object):
         return pages
 
     def searchthemes(self, name):
-        data = self.session.get(action='query', list='search', srsearch=name, inprop='url')
+        pprint(session.get(action='query', generator='search', gsrsearch='lol', gsrprop='snippet', prop='info', inprop='url'))
+
         pprint(data)
+
+        datapages = []
+ 
+        for query in data['query']:
+            for page in data['query']['pages']:
+                datapages.append(page)
+
+        pprint(datatypes)       

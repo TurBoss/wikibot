@@ -29,8 +29,6 @@ class Main(IPlugin):
 
     def onloggedin(self, socket):
         self.logger.debug("onloggedin({0})".format(str(socket)))
-        message = "JOIN main\n"
-        socket.send(message.encode("utf-8"))
 
     def onpong(self):
         self.logger.debug("onpong()")

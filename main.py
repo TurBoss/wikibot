@@ -18,7 +18,7 @@ if __name__=="__main__":
 			r = True
 			Log.Notice("Registering account")
 	pidfile = config.get('tasbot','pidfile','bot.pid')
-	print(('using pidfile %s'%pidfile))
+	Log.notice('using pidfile {0}'.format(pidfile))
 	inst = tasbot3.DefaultApp(configfile,pidfile,r,True)
 	if int(config.get( 'tasbot','debug', 0 )):
 		inst.run()#exec in fg
