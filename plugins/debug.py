@@ -32,9 +32,9 @@ class Main(IPlugin):
 
     def onpong(self):
         self.logger.debug("onpong()")
-
+    """
     def oncommandfromserver(self, command, args, socket):
         self.logger.debug("oncommandfromserver({0}, {1}, {2})".format(str(command), str(args), str(socket)))
-
+    """
     def onexit(self):
         self.logger.debug("onexit()")

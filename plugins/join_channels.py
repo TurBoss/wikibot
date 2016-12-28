@@ -44,5 +44,5 @@ class Main(IPlugin):
 
 	def onload(self, tasc):
 		self.app = tasc.main
-		self.admins = self.app.config.get_optionlist('tasbot', "admins")
+		self.admins = self.app.config.get_optionlist('tasbot3', "admins")
 		self.channels = self.app.config.get_optionlist('join_channels', "channels")
